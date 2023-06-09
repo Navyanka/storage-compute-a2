@@ -18,7 +18,7 @@ class EC2OperationsServicer(computeandstorage_pb2_grpc.EC2OperationsServicer):
     def StoreData(self, request, context):
         # Assuming 'mybucket' is your bucket name and 'myfile.txt' is the file you want to create
         self.s3.put_object(Body=request.data, Bucket='mybucketcomputestorage', Key='myfile.txt')
-        s3_uri = f"https://mybucket.s3.amazonaws.com/myfile.txt"
+        s3_uri = f"https://mybucketcomputestorage.s3.amazonaws.com/myfile.txt"
         return computeandstorage_pb2.StoreReply(s3uri=s3_uri)
 
     def AppendData(self, request, context):
