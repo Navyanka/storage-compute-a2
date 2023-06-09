@@ -36,9 +36,11 @@ class EC2OperationsServicer(computeandstorage_pb2_grpc.EC2OperationsServicer):
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     computeandstorage_pb2_grpc.add_EC2OperationsServicer_to_server(EC2OperationsServicer(), server)
-    server.add_insecure_port('0.0.0.0:50051')
+    server.add_insecure_port('0.0.0.0:8080')
     server.start()
+    print("Server started. Listening on 0.0.0.0:8080.")
     server.wait_for_termination()
+
 
 
 if __name__ == '__main__':
